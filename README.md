@@ -108,5 +108,46 @@ Create and activate a virtual environment, then install dependencies:
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+# Train the Model
+
+Run the training script to generate the machine learning model:
+
+```bash
+python train.py
+```
+This will create a serialized model file used by the API.
+
+# Run the API server
+Start the FastAPI application using Uvicorn:
+```bash
+uvicorn main:app --reload
+```
+The service will be available at:
+
+API base URL: http://127.0.0.1:8000
+
+Swagger UI: http://127.0.0.1:8000/docs
+
+# Running with Docker
+Build the Docker image:
+```bash
+docker build -t ml-risk-classifier .
+```
+Run the container:
+```bash
+docker run -p 8000:8000 ml-risk-classifier
+```
+# The API documentation will be accessible at:
+
+http://localhost:8000/docs
+
+# API Usage
+
+The API accepts a JSON payload containing numerical feature values and returns a risk classification.
+
+Detailed request and response schemas can be found in the Swagger UI.
+
+
 
 
